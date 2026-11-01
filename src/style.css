@@ -1,0 +1,100 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; font: 14px system-ui, sans-serif; background: #2b2d31; color: #e6e6e6; }
+[hidden] { display: none !important; }
+button { background: #3d4046; color: inherit; border: 1px solid #55585f; border-radius: 5px; padding: 5px 10px; cursor: pointer; }
+button:hover { background: #4a4d54; }
+button.on { background: #5865f2; border-color: #5865f2; }
+input, textarea { background: #1e1f22; color: inherit; border: 1px solid #55585f; border-radius: 5px; padding: 5px 8px; font: inherit; }
+
+#library header { display: flex; gap: 12px; align-items: center; padding: 14px 20px; background: #1e1f22; }
+#library h1 { margin: 0; font-size: 20px; flex: 1; }
+#libSearch { width: 260px; }
+#grid { display: grid; grid-template-columns: repeat(auto-fill, 170px); gap: 20px; padding: 24px; }
+.book { cursor: pointer; position: relative; }
+.book .cover { height: 220px; background: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px #0008; overflow: hidden; }
+.book canvas { max-width: 100%; max-height: 100%; }
+.book .t { margin-top: 8px; word-break: break-word; }
+.book .x { position: absolute; top: 6px; right: 6px; padding: 2px 8px; font-size: 12px; background: #000b; }
+.book .x:hover { background: #c0392b; }
+#delBtn:hover { background: #c0392b; }
+.empty { padding: 40px; opacity: .6; }
+
+#reader { display: flex; flex-direction: column; height: 100%; }
+.toolbar { display: flex; gap: 8px; align-items: center; padding: 8px 12px; background: #1e1f22; flex-wrap: wrap; }
+.toolbar .sp { flex: 1; }
+#bookTitle { font-weight: 600; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#pageNum { width: 64px; }
+#colors { display: inline-flex; gap: 4px; }
+.sw { width: 20px; height: 20px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; }
+.sw.on { border-color: #fff; }
+.body { flex: 1; display: flex; min-height: 0; }
+#side { width: 300px; background: #313338; display: flex; flex-direction: column; border-right: 1px solid #1e1f22; }
+#side nav { display: flex; }
+#side nav button { flex: 1; border-radius: 0; font-size: 12px; padding: 8px 2px; }
+.tab { flex: 1; overflow: auto; padding: 10px; }
+#tab-notes { display: flex; } #tab-notes[hidden] { display: none; }
+
+#findInput { width: 100%; margin-bottom: 8px; }
+.item { padding: 7px 8px; border-radius: 5px; background: #3a3d43; margin-bottom: 6px; cursor: pointer; display: flex; gap: 6px; align-items: center; }
+.item:hover { background: #45484f; }
+.item .main { flex: 1; min-width: 0; }
+.item small { opacity: .65; display: block; }
+.item input { width: 100%; }
+.item .x { padding: 0 6px; }
+.item .bar { width: 5px; align-self: stretch; border-radius: 3px; }
+h4 { margin: 10px 0 6px; font-size: 12px; text-transform: uppercase; opacity: .6; }
+
+#pages { flex: 1; overflow: auto; background: #404249; padding: 16px 0; }
+.page { position: relative; margin: 0 auto 14px; background: #fff; box-shadow: 0 2px 8px #0009; --total-scale-factor: 1; }
+.page canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hlLayer, .stickyLayer { position: absolute; inset: 0; }
+.hlLayer { pointer-events: none; mix-blend-mode: multiply; }
+.hl { position: absolute; border-radius: 2px; }
+.page .textLayer { position: absolute; inset: 0; }
+.stickyLayer { pointer-events: none; }
+body.stickyMode .stickyLayer { pointer-events: auto; cursor: crosshair; }
+body.stickyMode .textLayer { pointer-events: none; }
+.sticky { position: absolute; width: 170px; pointer-events: auto; cursor: default; box-shadow: 2px 3px 8px #0006; border-radius: 3px; transform: translate(0, 0); }
+.sticky .h { height: 16px; cursor: move; display: flex; justify-content: flex-end; background: #0002; }
+.sticky .h span { cursor: pointer; padding: 0 5px; font-size: 12px; color: #000a; line-height: 16px; }
+.sticky textarea { width: 100%; height: 90px; display: block; border: 0; border-radius: 0; background: transparent; color: #222; resize: both; min-width: 120px; }
+.ear { position: absolute; top: 0; right: 0; width: 28px; height: 28px; cursor: pointer; z-index: 5; }
+.ear::before { content: ""; position: absolute; inset: 0; background: linear-gradient(225deg, transparent 50%, #0000 50%); }
+.ear:hover::before { background: linear-gradient(225deg, #0002 50%, transparent 50%); }
+.ear.on::before { background: linear-gradient(225deg, #5865f2 0 50%, transparent 50%); filter: drop-shadow(-1px 1px 1px #0006); }
+.flash { outline: 3px solid #5865f2; }
+
+#library h1 { margin-right: auto; }
+#allNotes { padding: 24px; max-width: 900px; }
+#allNotes h3 { margin: 22px 0 8px; cursor: pointer; }
+#allNotes h3:hover { text-decoration: underline; }
+.note { background: #3a3d43; border-radius: 6px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; white-space: pre-wrap; word-break: break-word; }
+.note:hover { background: #45484f; }
+.note small { display: block; opacity: .6; margin-bottom: 4px; }
+
+#notesText { flex: 1; overflow: auto; background: #1e1f22; border: 1px solid #55585f; border-radius: 5px; padding: 8px; white-space: pre-wrap; word-break: break-word; outline: none; }
+#notesText:empty::before { content: attr(data-ph); opacity: .5; }
+#notesText img, .note img { max-width: 100%; display: block; margin: 6px 0; border-radius: 3px; }
+body.snipMode .textLayer, body.snipMode .stickyLayer { pointer-events: none; }
+body.snipMode #pages { cursor: crosshair; user-select: none; }
+.snipBox { position: absolute; border: 2px dashed #5865f2; background: #5865f233; pointer-events: none; z-index: 10; }
+.book .rn { position: absolute; top: 6px; left: 6px; padding: 2px 8px; font-size: 12px; background: #000b; }
+.book .rn:hover { background: #5865f2; }
+.note textarea { width: 100%; height: 80px; }
+
+#notesPage { display: flex; flex-direction: column; height: 100%; }
+#npTitle { font-weight: 600; font-size: 16px; }
+#npDel:hover { background: #c0392b; }
+#npScroll { flex: 1; overflow: auto; background: #f5f1e8; color: #222; }
+#npBody { max-width: 820px; margin: 0 auto; padding: 40px 24px 80px; font: 18px/1.75 Georgia, serif; }
+#npBody h1 { font: 700 28px system-ui, sans-serif; margin: 0 0 24px; }
+#npBody h4 { font: 600 13px system-ui, sans-serif; color: #666; margin: 36px 0 10px; }
+#notesOnly { min-height: 45vh; margin: 0; background: transparent; color: #222; border: 0; padding: 0; white-space: pre-wrap; word-break: break-word; outline: none; }
+#notesOnly:empty::before { content: attr(data-ph); opacity: .45; }
+#notesOnly img { max-width: 100%; display: block; margin: 12px 0; border-radius: 3px; }
+#npBody .stickyRow { background: #fff176; border-radius: 4px; padding: 10px 14px; margin-bottom: 14px; box-shadow: 1px 2px 5px #0003; }
+#npBody .stickyRow small { font: 12px system-ui, sans-serif; color: #665; display: block; margin-bottom: 4px; }
+#npBody .stickyRow textarea { width: 100%; min-height: 70px; background: transparent; color: #222; border: 0; font: inherit; resize: vertical; outline: none; }
+.book .done { position: absolute; bottom: 36px; left: 6px; background: #2e9e5b; color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 10px; }
+.book .gone { opacity: .6; }
+#doneBtn.on { background: #2e9e5b; border-color: #2e9e5b; }

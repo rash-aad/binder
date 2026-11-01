@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self'">
+<title>Binder</title>
+<link rel="stylesheet" href="../node_modules/pdfjs-dist/web/pdf_viewer.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="library">
+  <header>
+    <h1>Binder</h1>
+    <button id="tabBooks" class="on">Library</button>
+    <button id="tabNotes">Your Notes</button>
+    <input id="libSearch" type="search" placeholder="Search library…">
+    <button id="addBtn">+ Add PDF</button>
+  </header>
+  <div id="grid"></div>
+  <div id="allNotes" hidden></div>
+</section>
+
+<section id="notesPage" hidden>
+  <div class="toolbar">
+    <button id="npBack">← All notes</button>
+    <span id="npTitle"></span>
+    <span class="sp"></span>
+    <button id="npOpen">Open PDF</button>
+    <button id="npDel">🗑 Delete notes</button>
+  </div>
+  <div id="npScroll"><article id="npBody"></article></div>
+</section>
+
+<section id="reader" hidden>
+  <div class="toolbar">
+    <button id="backBtn">← Library</button>
+    <span id="bookTitle"></span>
+    <button id="renBtn" title="Rename this PDF">✎ Rename</button>
+    <button id="doneBtn" title="Mark this book as completely read">☐ Mark complete</button>
+    <button id="delBtn" title="Delete this PDF and all its notes">🗑 Delete PDF</button>
+    <span class="sp"></span>
+    <button id="hlTool" title="Drag over words with the mouse to highlight">🖍 Highlight</button>
+    <span id="colors"></span>
+    <button id="stickyTool" title="Click on a page to place a sticky note">🗒 Sticky</button>
+    <button id="snipTool" title="Drag a box on a page to save a screenshot into your notes">📷 Snip</button>
+    <button id="bmBtn" title="Bookmark this page">🔖 Bookmark</button>
+    <button id="earBtn" title="Fold the corner of this page">◩ Dog-ear</button>
+    <span class="sp"></span>
+    <button id="zoomOut">−</button><span id="zoomLbl">100%</span><button id="zoomIn">+</button>
+    <input id="pageNum" type="number" min="1"> / <span id="pageTotal"></span>
+  </div>
+  <div class="body">
+    <aside id="side">
+      <nav>
+        <button data-tab="marks" class="on">Marks</button>
+        <button data-tab="hls">Highlights</button>
+        <button data-tab="notes">Notes</button>
+        <button data-tab="find">Search</button>
+      </nav>
+      <div id="tab-marks" class="tab"></div>
+      <div id="tab-hls" class="tab" hidden></div>
+      <div id="tab-notes" class="tab" hidden><div id="notesText" contenteditable="true" data-ph="Notes for this PDF… (paste images with Ctrl+V, or use 📷 Snip)"></div></div>
+      <div id="tab-find" class="tab" hidden>
+        <input id="findInput" type="search" placeholder="Search in this PDF…">
+        <div id="findResults"></div>
+      </div>
+    </aside>
+    <main id="pages"></main>
+  </div>
+</section>
+<script type="module" src="app.js"></script>
+</body>
+</html>

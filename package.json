@@ -1,0 +1,43 @@
+{
+  "name": "binder",
+  "productName": "Binder",
+  "version": "1.0.0",
+  "description": "PDF library with highlights, bookmarks, dog-ears and notes",
+  "author": "Rashaad N Mohammed",
+  "license": "MIT",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux AppImage"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.4.299"
+  },
+  "devDependencies": {
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "io.github.rash-aad.binder",
+    "productName": "Binder",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**",
+      "build/icon.png",
+      "node_modules/pdfjs-dist/build/pdf.mjs",
+      "node_modules/pdfjs-dist/build/pdf.worker.mjs",
+      "node_modules/pdfjs-dist/web/pdf_viewer.css",
+      "node_modules/pdfjs-dist/web/images/**"
+    ],
+    "linux": {
+      "target": "AppImage",
+      "category": "Office",
+      "icon": "build/icon.png",
+      "artifactName": "Binder.AppImage"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

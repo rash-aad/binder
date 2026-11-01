@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.rash_aad.Binder</id>
+  <name>Binder</name>
+  <summary>PDF library with highlights, bookmarks, dog-ears and notes</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <developer id="io.github.rash-aad">
+    <name>Rashaad N Mohammed</name>
+  </developer>
+  <description>
+    <p>Binder is a simple desktop library for your PDFs. Open a book, highlight passages in several colours, bookmark pages, fold a page's corner with a dog-ear, and leave sticky notes. All your notes are gathered on one page.</p>
+    <p>Your PDFs and notes are stored as plain files in the Binder folder in your home directory, independent of the app.</p>
+  </description>
+  <launchable type="desktop-id">io.github.rash_aad.Binder.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/rash-aad/binder/main/docs/library.png</image>
+      <caption>The library</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/rash-aad/binder/main/docs/reader.png</image>
+      <caption>Reading a PDF with highlight, sticky note, bookmark and dog-ear tools</caption>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/rash-aad/binder</url>
+  <url type="bugtracker">https://github.com/rash-aad/binder/issues</url>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.0.0" date="2026-11-01"/>
+  </releases>
+  <provides><mediatype>application/pdf</mediatype></provides>
+  <categories><category>Office</category><category>Viewer</category></categories>
+</component>

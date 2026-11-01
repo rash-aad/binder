@@ -18,7 +18,7 @@
     "electron-builder": "^26.18.0"
   },
   "build": {
-    "appId": "io.github.rash-aad.binder",
+    "appId": "io.github.rash_aad.Binder",
     "productName": "Binder",
     "files": [
       "main.js",

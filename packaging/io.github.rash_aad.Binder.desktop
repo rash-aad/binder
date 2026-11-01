@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Binder
+Comment=PDF library with highlights, bookmarks, dog-ears and notes
+Exec=binder %U
+Icon=io.github.rash_aad.Binder
+Terminal=false
+Type=Application
+Categories=Office;Viewer;
+MimeType=application/pdf;

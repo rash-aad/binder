@@ -1,0 +1,37 @@
+name: binder-pdf
+title: Binder
+base: core24
+version: '1.0.0'
+summary: PDF library with highlights, bookmarks, dog-ears and notes
+description: |
+  Binder is a simple desktop library for your PDFs. Highlight passages,
+  bookmark pages, fold page corners with dog-ears and leave sticky notes.
+  Your PDFs and notes are stored as plain files in ~/Binder.
+license: MIT
+grade: stable
+confinement: strict
+icon: build/icon.png
+
+apps:
+  binder-pdf:
+    command: bin/binder
+    extensions: [gnome]
+    plugs: [home, desktop, desktop-legacy, x11, wayland, opengl, network-bind]
+
+parts:
+  binder:
+    plugin: npm
+    npm-include-node: true
+    npm-node-version: 22.13.0
+    source: .
+    build-packages: [unzip]
+    override-build: |
+      npm ci --omit=dev
+      npm install --no-save electron@45.1.0
+      mkdir -p $CRAFT_PART_INSTALL/lib/binder $CRAFT_PART_INSTALL/bin
+      cp -r main.js preload.js package.json src $CRAFT_PART_INSTALL/lib/binder/
+      mkdir -p $CRAFT_PART_INSTALL/lib/binder/node_modules/pdfjs-dist
+      cp -r node_modules/pdfjs-dist/build node_modules/pdfjs-dist/web node_modules/pdfjs-dist/package.json $CRAFT_PART_INSTALL/lib/binder/node_modules/pdfjs-dist/
+      cp -r node_modules/electron/dist $CRAFT_PART_INSTALL/lib/electron
+      printf '#!/bin/sh\nexec "$SNAP/lib/electron/electron" --no-sandbox "$SNAP/lib/binder" "$@"\n' > $CRAFT_PART_INSTALL/bin/binder
+      chmod +x $CRAFT_PART_INSTALL/bin/binder
